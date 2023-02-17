@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import { Route, Router, Routes } from 'react-router-dom';
+import HomePage from './views/HomePage';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import AboutPage from './views/AboutPage';
+import LikeDislikeSelectionPage from './views/LikeDislikeSelectionPage';
+import UsersPage from './views/UsersPage';
+import SingleUsersPage from './views/SingleUserPage';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <Provider store={store}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/like-dislike" element={<LikeDislikeSelectionPage />} />
+        <Route path="/users" element={<UsersPage />} />
+        <Route path="/users/:id" element={<SingleUsersPage />} />
+      </Routes>
+    </Provider>
   );
 }
 
